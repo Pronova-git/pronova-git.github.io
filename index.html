@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Pronova | 公式サイト</title>
+  <meta name="description" content="Pronovaの公式サイト。サービス概要、強み、連絡先をご案内します。" />
+  <meta name="robots" content="index,follow" />
+
+  <!-- OGP (SNSシェア用) -->
+  <meta property="og:title" content="Pronova | 公式サイト" />
+  <meta property="og:description" content="Pronovaの公式サイト。サービス概要、強み、連絡先をご案内します。" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://pronova-lab.com/" />
+
+  <style>
+    :root{
+      --bg:#0b1220;
+      --card:#101a33;
+      --text:#eaf0ff;
+      --muted:#b7c4ffcc;
+      --line:#2a3a77;
+      --btn:#ffffff;
+      --btnText:#0b1220;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, "Hiragino Kaku Gothic ProN", "Yu Gothic", "Noto Sans JP", sans-serif;
+      background: radial-gradient(1200px 600px at 20% 0%, #1a2a6b 0%, transparent 60%),
+                  radial-gradient(1200px 600px at 80% 10%, #0b8bd6 0%, transparent 55%),
+                  var(--bg);
+      color:var(--text);
+      line-height:1.6;
+    }
+    a{color:inherit}
+    .wrap{max-width:980px;margin:0 auto;padding:28px 18px 64px}
+    header{
+      display:flex;align-items:center;justify-content:space-between;gap:14px;
+      padding:14px 0 22px;border-bottom:1px solid #ffffff1a
+    }
+    .brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+    .logo{
+      width:38px;height:38px;border-radius:12px;
+      background: linear-gradient(135deg, #7cf0ff 0%, #6a7bff 45%, #ff7bf1 100%);
+      box-shadow: 0 10px 24px #00000055;
+    }
+    .brand span{font-weight:800;letter-spacing:.5px;font-size:18px}
+    nav{display:flex;gap:14px;flex-wrap:wrap}
+    nav a{
+      text-decoration:none;
+      font-size:14px;color:var(--muted);
+      padding:8px 10px;border-radius:10px
+    }
+    nav a:hover{background:#ffffff12;color:var(--text)}
+    .hero{padding:46px 0 22px}
+    .kicker{color:var(--muted);font-weight:600;letter-spacing:.12em;text-transform:uppercase;font-size:12px}
+    h1{margin:10px 0 10px;font-size:44px;line-height:1.15}
+    .lead{max-width:720px;color:#dfe6ff;opacity:.92;font-size:16px}
+    .ctaRow{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;gap:10px;
+      padding:12px 14px;border-radius:14px;
+      background:var(--btn);color:var(--btnText);
+      text-decoration:none;font-weight:800;font-size:14px;
+      box-shadow:0 10px 24px #00000055;
+      border:1px solid #ffffff22;
+    }
+    .btn.secondary{
+      background:transparent;color:var(--text);
+      box-shadow:none;border:1px solid #ffffff33
+    }
+    .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:14px;margin-top:22px}
+    .card{
+      grid-column:span 12;
+      background: linear-gradient(180deg, #ffffff12 0%, #ffffff08 100%);
+      border:1px solid #ffffff1f;
+      border-radius:18px;
+      padding:18px;
+      backdrop-filter: blur(8px);
+    }
+    @media(min-width:800px){
+      .card.col4{grid-column:span 4}
+      .card.col6{grid-column:span 6}
+      .card.col8{grid-column:span 8}
+      .card.col12{grid-column:span 12}
+    }
+    .card h2{margin:0 0 8px;font-size:18px}
+    .card p{margin:0;color:#dfe6ffcc}
+    .list{margin:10px 0 0;padding:0 0 0 18px;color:#dfe6ffcc}
+    .list li{margin:6px 0}
+    .tagRow{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+    .tag{
+      font-size:12px;color:#dfe6ffcc;
+      padding:6px 10px;border-radius:999px;
+      border:1px solid #ffffff22;background:#0b122080;
+    }
+    footer{
+      margin-top:30px;padding-top:18px;border-top:1px solid #ffffff1a;
+      color:#dfe6ff99;font-size:12px;display:flex;gap:10px;flex-wrap:wrap;justify-content:space-between
+    }
+    .mono{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace}
+  </style>
+
+  <!-- 構造化データ（簡易） -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Organization",
+    "name":"Pronova",
+    "url":"https://pronova-lab.com/",
+    "sameAs":[],
+    "description":"Pronovaの公式サイト。サービス概要、強み、連絡先をご案内します。"
+  }
+  </script>
+</head>
+
+<body>
+  <div class="wrap">
+    <header>
+      <a class="brand" href="#top">
+        <div class="logo" aria-hidden="true"></div>
+        <span>Pronova</span>
+      </a>
+      <nav aria-label="サイトメニュー">
+        <a href="#services">サービス</a>
+        <a href="#about">会社概要</a>
+        <a href="#contact">お問い合わせ</a>
+      </nav>
+    </header>
+
+    <main id="top" class="hero">
+      <div class="kicker">Pronova</div>
+      <h1>シンプルに、確実に。<br>ビジネスを前に進める。</h1>
+      <p class="lead">
+        Pronova は、課題整理から実行支援まで、必要な範囲をシンプルに提供します。
+        小さなご相談からでも、お気軽にご連絡ください。
+      </p>
+
+      <div class="ctaRow">
+        <a class="btn" href="#contact">お問い合わせ</a>
+        <a class="btn secondary" href="#services">提供内容を見る</a>
+      </div>
+
+      <section class="grid" aria-label="ハイライト">
+        <div class="card col4">
+          <h2>スピード</h2>
+          <p>意思決定と実行を速く。必要なアウトプットを短いサイクルで。</p>
+          <div class="tagRow">
+            <span class="tag">短サイクル</span><span class="tag">実行重視</span>
+          </div>
+        </div>
+        <div class="card col4">
+          <h2>透明性</h2>
+          <p>状況・前提・判断軸を明確にし、関係者が同じ地図を持てるように。</p>
+          <div class="tagRow">
+            <span class="tag">可視化</span><span class="tag">合意形成</span>
+          </div>
+        </div>
+        <div class="card col4">
+          <h2>実務品質</h2>
+          <p>資料・提案・運用まで、現場でそのまま使える形で納品します。</p>
+          <div class="tagRow">
+            <span class="tag">再利用可能</span><span class="tag">ドキュメント</span>
+          </div>
+        </div>
+      </section>
+
+      <section id="services" class="grid" style="margin-top:18px">
+        <div class="card col8">
+          <h2>サービス</h2>
+          <p>以下は例です。内容は事業に合わせて調整できます。</p>
+          <ul class="list">
+            <li>事業・製品の整理（課題、価値、ターゲット、競合、優先順位）</li>
+            <li>提案書／資料作成（日本語・英語）</li>
+            <li>技術・ビジネス両面の支援（要件整理、ロードマップ、ステークホルダー調整）</li>
+            <li>PoC 設計／評価／導入支援（計画、指標、進行管理）</li>
+          </ul>
+        </div>
+        <div class="card col4">
+          <h2>対応スタイル</h2>
+          <p>スポット／月次／並走など柔軟に対応します。</p>
+          <div class="tagRow">
+            <span class="tag">スポット</span>
+            <span class="tag">月次</span>
+            <span class="tag">並走</span>
+          </div>
+        </div>
+      </section>
+
+      <section id="about" class="grid" style="margin-top:18px">
+        <div class="card col6">
+          <h2>会社概要</h2>
+          <ul class="list">
+            <li><span class="mono">Name</span>：Pronova</li>
+            <li><span class="mono">Website</span>：pronova-lab.com</li>
+            <li><span class="mono">Business</span>：コンサルティング／実行支援 など</li>
+          </ul>
+          <p style="margin-top:10px;color:#dfe6ffcc">
+            ※ ここはあとで実態に合わせて書き換えてください（所在地・事業内容・代表者など）。
+          </p>
+        </div>
+        <div class="card col6">
+          <h2>強み</h2>
+          <ul class="list">
+            <li>複雑な内容を整理して、意思決定しやすい形に落とし込む</li>
+            <li>実務で使える資料・運用に落とす（机上で終わらせない）</li>
+            <li>日本語／英語の両方でコミュニケーション可能</li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="contact" class="grid" style="margin-top:18px">
+        <div class="card col12">
+          <h2>お問い合わせ</h2>
+          <p>
+            連絡先をここに入れてください（例：メールアドレス、LinkedIn、フォームURL など）。
+            迷惑メール対策として、メールは画像化またはフォーム推奨です。
+          </p>
+          <ul class="list">
+            <li>Email：<span class="mono">info@pronova-lab.com</span>（例）</li>
+            <li>LinkedIn：<span class="mono">https://linkedin.com/in/xxxxx</span>（例）</li>
+          </ul>
+        </div>
+      </section>
+
+      <footer>
+        <div>© <span id="y"></span> Pronova. All rights reserved.</div>
+        <div class="mono">Built with GitHub Pages</div>
+      </footer>
+    </main>
+  </div>
+
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
