@@ -61,7 +61,9 @@ export default function ContactPage() {
 
     if (!validateForm()) return
     setSubmitStatus("idle")
-    if (!WEB3FORMS_ACCESS_KEY || WEB3FORMS_ACCESS_KEY === "YOUR_ACCESS_KEY") {
+
+      // ✅ "YOUR_ACCESS_KEY" との比較は削除（TypeScriptが怒る原因）
+    if (!WEB3FORMS_ACCESS_KEY) {
       alert("Web3Forms access key is not set.")
       return
     }
