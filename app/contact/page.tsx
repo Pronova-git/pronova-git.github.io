@@ -19,6 +19,8 @@ export default function ContactPage() {
     message: "",
   })
   const [errors, setErrors] = useState<Record<string, string>>({})
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle")
 
   const validateForm = () => {
     const newErrors: Record<string, string> = {}
@@ -40,7 +42,7 @@ export default function ContactPage() {
     setErrors(newErrors)
     return Object.keys(newErrors).length === 0
   }
-
+/* Comment out for Web2Forms migration
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
     if (validateForm()) {
@@ -50,6 +52,59 @@ export default function ContactPage() {
       setErrors({})
     }
   }
+  */
+ /* Addition for Web3Forms migration */
+  const WEB3FORMS_ACCESS_KEY = "fc5a2afc-1437-40ed-973f-5b38efea0495" // ←ここに入れる
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+
+    if (!validateForm()) return
+    setSubmitStatus("idle")
+    if (!WEB3FORMS_ACCESS_KEY || WEB3FORMS_ACCESS_KEY === "YOUR_ACCESS_KEY") {
+      alert("Web3Forms access key is not set.")
+      return
+    }
+
+    try {
+      setIsSubmitting(true)
+
+      const payload = {
+        access_key: WEB3FORMS_ACCESS_KEY,
+        subject: "New inquiry from pronova-lab.com",
+        from_name: "Pronova Website",
+        name: formData.name,
+        company: formData.company,
+        email: formData.email,
+        message: formData.message,
+        // bot対策（任意・後述）
+        // botcheck: "",
+      }
+
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      })
+
+      const data = await res.json()
+
+      if (data.success) {
+        setSubmitStatus("success")
+        setFormData({ name: "", company: "", email: "", message: "" })
+        setErrors({})
+      } else {
+        console.error("Web3Forms error:", data)
+        setSubmitStatus("error")
+      }
+    } catch (err) {
+      console.error(err)
+      setSubmitStatus("error")
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
+/* end of addition */
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target
@@ -130,6 +185,7 @@ export default function ContactPage() {
               <Card className="bg-white/5 backdrop-blur border-white/10">
                 <CardContent className="p-8">
                   <form onSubmit={handleSubmit} className="space-y-6">
+                    <input type="checkbox" name="botcheck" className="hidden" style={{ display: "none" }} />
                     <div>
                       <Label htmlFor="name" className="text-white mb-2 block">
                         Name *
@@ -191,6 +247,7 @@ export default function ContactPage() {
                       {errors.message && <p className="text-red-400 text-sm mt-1">{errors.message}</p>}
                     </div>
 
+{/*  Delete 
                     <Button
                       type="submit"
                       size="lg"
@@ -198,10 +255,36 @@ export default function ContactPage() {
                     >
                       Send Message
                     </Button>
+*/}
+{/* Addition for Web3Forms migration */}
+                    <Button
+                      type="submit"
+                      size="lg"
+                      disabled={isSubmitting}
+                      className="w-full bg-white text-[rgb(26,20,96)] hover:bg-white/90 font-semibold disabled:opacity-60"
+                    >
+                      {isSubmitting ? "Sending..." : "Send Message"}
+                    </Button>
+
+                    {submitStatus === "success" && (
+                      <p className="text-green-300 text-sm text-center" aria-live="polite">
+                        Thank you! Your message has been sent.
+                      </p>
+                    )}
+                    {submitStatus === "error" && (
+                      <p className="text-red-300 text-sm text-center">
+                      Sorry, something went wrong. Please try again later.
+                      </p>
+                    )}           
+{/* end of addition */}
 
                     <p className="text-white/60 text-sm text-center">
-                      By submitting this form, you agree to our privacy policy.
+                      By submitting this form, you agree to our{" "}
+                      <a href="/privacy" className="underline hover:text-white">
+                        privacy policy
+                      </a>.
                     </p>
+
                   </form>
                 </CardContent>
               </Card>
