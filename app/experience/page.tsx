@@ -30,7 +30,7 @@ export default function ExperiencePage() {
       <Hero
         title="Experience"
         subtitle="Trusted by global technology companies"
-        imageSrc="/images/home.png"
+        imageSrc="/images/software_ai.png"
         align="center"
         overlayStrength="medium"
       />
