@@ -93,6 +93,12 @@ export default function ContactPage() {
 
       if (data.success) {
         setSubmitStatus("success")
+
+        ;(window as any).gtag?.("event", "contact_submit", {
+        event_category: "engagement",
+        event_label: "contact_form",
+        })
+
         setFormData({ name: "", company: "", email: "", message: "" })
         setErrors({})
       } else {
