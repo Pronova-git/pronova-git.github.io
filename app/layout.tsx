@@ -1,5 +1,5 @@
 import type React from "react"
-import type { Metadata } from "next"
+import type { Metadata, Viewport } from "next"
 import { Geist, Geist_Mono } from "next/font/google"
 import Script from "next/script"
 import { Analytics } from "@vercel/analytics/next"
@@ -15,22 +15,33 @@ export const metadata: Metadata = {
   description:
     "Pronova supports global companies entering and growing in Japan through strategic consulting and advanced technology solutions.",
   generator: "v0.app",
+
+  // ✅ Search Console verification
+  verification: {
+    google: "yUUe0MrGJscSTgHd6mlPOMR4Rf4AFMmOGNaftciZ7nM",
+  },
+
+  // ✅ Favicon / icons
+  icons: {
+    icon: [
+      { url: "/favicon/favicon.ico", sizes: "any" },
+      { url: "/favicon/favicon.svg", type: "image/svg+xml" },
+    ],
+    apple: [{ url: "/favicon/apple-touch-icon.png" }],
+  },
+
+  // ✅ manifest
+  manifest: "/favicon/site.webmanifest",
 }
 
-export const viewport = {
+export const viewport: Viewport = {
   themeColor: "rgb(26, 20, 96)",
 }
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode
-}>) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <head>
-        {/* Search Console verification */}
-        <meta name="google-site-verification" content="yUUe0MrGJscSTgHd6mlPOMR4Rf4AFMmOGNaftciZ7nM" />
+      <body className="font-sans antialiased">
         {/* Google Analytics GA4 */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-WT63VSHJPS"
@@ -41,14 +52,10 @@ export default function RootLayout({
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', 'G-WT63VSHJPS', {
-              anonymize_ip: true,
-            });
+            gtag('config', 'G-WT63VSHJPS', { anonymize_ip: true });
           `}
         </Script>
-      </head>
 
-      <body className={`font-sans antialiased`}>
         <Navigation />
         {children}
         <Footer />
