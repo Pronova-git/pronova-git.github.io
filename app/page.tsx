@@ -1,6 +1,13 @@
+import type { Metadata } from "next"
 import { Hero } from "@/components/hero"
 import { Card, CardContent } from "@/components/ui/card"
 import { Building2, Code2, Globe, Lightbulb } from "lucide-react"
+
+export const metadata: Metadata = {
+  title: "Japan Market Entry & Technology Consulting | Pronova",
+  description:
+    "Pronova helps global companies enter and grow in the Japanese market through business strategy, technology consulting, and local execution support.",
+}
 
 export default function Home() {
   return (
