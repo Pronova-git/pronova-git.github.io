@@ -4,7 +4,7 @@ import { Radio, Film, Brain, Cpu, Blocks } from "lucide-react"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Expertise - Pronova",
+  title: "Expertise | Technical & Business Expertise for Japan - Pronova",
   description: "Deep technical expertise in telecom, AI, multimedia, and emerging technologies.",
 }
 
